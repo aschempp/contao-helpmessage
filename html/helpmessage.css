@@ -1,5 +1,5 @@
 img.helpicon { cursor: pointer }
-.messagebox { background: url(img/arrow.png) no-repeat 25px bottom; padding-bottom: 12px; font-size: 90%; }
+.messagebox { background: url(arrow.png) no-repeat 25px bottom; padding-bottom: 12px; font-size: 90%; }
 
 .messagebox p {
 	margin: 0;

@@ -73,5 +73,5 @@ var HelpMessage =
 	{
 		el.element.empty();
 		el.element.removeClass('messagebox');
-	},
+	}
 };

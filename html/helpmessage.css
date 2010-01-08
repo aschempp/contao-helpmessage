@@ -12,7 +12,7 @@ img.helpicon { cursor: pointer }
 	font-family: tahoma, verdana, "sans-serif";
  
 	/* CSS for older browsers */
-	background-color: #000;
+	background-color: rgb(0,0,0);
 
 	/* CSS for modern browsers */
 	background-color: rgba(0, 0, 0, 0.8);
@@ -22,4 +22,5 @@ img.helpicon { cursor: pointer }
 	box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
 	-moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
 	-webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#BB000000,endColorstr=#BB000000);
 }

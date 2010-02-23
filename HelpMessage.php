@@ -57,7 +57,7 @@ class HelpMessage extends Frontend
 		{
 			foreach( $GLOBALS['HELPMESSAGE']['labels'] as $strId => $strMessage )
 			{
-				$strBuffer = preg_replace('@(<label for="'.$strId.'"[^>]*>[^<]*)(</label>)@', '$1 <img src="system/themes/default/images/show.gif" height="16" width="16" alt="Hilfstext" class="helpicon" /><em class="helpmessage">' . $strMessage . '</em>$2', $strBuffer);
+				$strBuffer = preg_replace('@(]*for="'.$strId.'"[^>]*>.*?)(</label>)@', '$1 <img src="system/themes/default/images/show.gif" alt="Hilfstext" class="helpicon" /><em class="helpmessage">' . $strMessage . '</em>$2', $strBuffer);
 			}
 		}
 			

@@ -19,7 +19,7 @@
  * Software Foundation website at http://www.gnu.org/licenses/.
  *
  * PHP version 5
- * @copyright  Andreas Schempp 2009
+ * @copyright  Andreas Schempp 2009-2010
  * @author     Andreas Schempp <andreas@schempp.ch>
  * @license    http://opensource.org/licenses/lgpl-3.0.html
  * @version    $Id$
@@ -29,16 +29,16 @@
 /**
  * Palettes
  */
-foreach( $GLOBALS['TL_DCA']['tl_form_field']['palettes'] as $strField => $strPalette )
+foreach( $GLOBALS['TL_DCA']['tl_form_field']['palettes'] as $name => $palette )
 {
-	if (in_array($strField, array('__selector__')))
+	if (in_array($name, array('__selector__')))
 		continue;
 		
-	$GLOBALS['TL_DCA']['tl_form_field']['palettes'][$strField] = preg_replace('@([;|,]value)([;|,])@', '$1,helpmessage$2', $strPalette, -1, $count);
+	$GLOBALS['TL_DCA']['tl_form_field']['palettes'][$name] = preg_replace('@([;|,]value)([;|,])@', '$1,helpmessage$2', $palette, -1, $count);
 	
 	if (!$count)
 	{
-		$GLOBALS['TL_DCA']['tl_form_field']['palettes'][$strField] = preg_replace('@([;|,]mandatory)([;|,])@', '$1,helpmessage$2', $strPalette);
+		$GLOBALS['TL_DCA']['tl_form_field']['palettes'][$name] = preg_replace('@([;|,]mandatory)([;|,])@', '$1,helpmessage$2', $palette);
 	}
 }
 

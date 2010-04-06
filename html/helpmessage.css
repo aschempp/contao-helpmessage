@@ -12,10 +12,10 @@ img.helpicon { cursor: pointer }
 	font-family: tahoma, verdana, "sans-serif";
  
 	/* CSS for older browsers */
-	background-color: rgb(0,0,0);
+	background: rgb(0,0,0);
 
 	/* CSS for modern browsers */
-	background-color: rgba(0, 0, 0, 0.8);
+	background: rgba(0, 0, 0, 0.8);
 	border-radius: 8px;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;

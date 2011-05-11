@@ -29,7 +29,10 @@
 /**
  * Palettes
  */
+$GLOBALS['TL_DCA']['tl_form']['palettes']['__selector__'][] = 'helplabels';
 $GLOBALS['TL_DCA']['tl_form']['palettes']['default'] = str_replace(';{email_legend}', ',helplabels;{email_legend}', $GLOBALS['TL_DCA']['tl_form']['palettes']['default']);
+$GLOBALS['TL_DCA']['tl_form']['subpalettes']['helplabels_1'] = 'helpicon';
+$GLOBALS['TL_DCA']['tl_form']['subpalettes']['helplabels_2'] = 'helpicon';
 
 
 /**
@@ -39,7 +42,17 @@ $GLOBALS['TL_DCA']['tl_form']['fields']['helplabels'] = array
 (
 	'label'			=> &$GLOBALS['TL_LANG']['tl_form']['helplabels'],
 	'exclude'		=> true,
-	'inputType'		=> 'checkbox',
-	'eval'			=> array('tl_class'=>'w50'),
+	'inputType'		=> 'radio',
+	'options'		=> array(1, 2),
+	'reference'		=> &$GLOBALS['TL_LANG']['tl_form']['helplabels_options'],
+	'eval'			=> array('submitOnChange'=>true, 'includeBlankOption'=>true, 'blankOptionLabel'=>&$GLOBALS['TL_LANG']['tl_form']['helplabels_options'][0], 'tl_class'=>'clr'),
+);
+
+$GLOBALS['TL_DCA']['tl_form']['fields']['helpicon'] = array
+(
+	'label'			=> &$GLOBALS['TL_LANG']['tl_form']['helpicon'],
+	'exclude'		=> true,
+	'inputType'		=> 'fileTree',
+	'eval'			=> array('fieldType'=>'radio', 'files'=>true, 'filesOnly'=>true, 'extensions'=>'jpg,jpeg,png,gif', 'tl_class'=>'clr'),
 );
 

@@ -31,3 +31,11 @@
  */
 $GLOBALS['TL_LANG']['tl_form']['helplabels']	= array('Add help message to field label', 'Show an accessible info icon for help messages on field labels.');
 
+
+/**
+ * References
+ */
+$GLOBALS['TL_LANG']['tl_form']['helplabels_options'][0] = 'Nur für Eingabefeld';
+$GLOBALS['TL_LANG']['tl_form']['helplabels_options'][1] = 'Für Eingabefeld & Bezeichnung';
+$GLOBALS['TL_LANG']['tl_form']['helplabels_options'][2] = 'Nur für Bezeichnung';
+

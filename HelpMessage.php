@@ -35,11 +35,16 @@ class HelpMessage extends Frontend
 		{
 			$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/helpmessage/html/helpmessage.js';
 			$GLOBALS['TL_CSS'][] = 'system/modules/helpmessage/html/helpmessage.css';
-			$GLOBALS['HELPMESSAGE']['fields']['ctrl_'.$objWidget->id] = $objWidget->helpmessage;
 			
-			if ($arrForm['helplabels'])
+			if ($arrForm['helplabels'] < 2)
+			{
+				$GLOBALS['HELPMESSAGE']['fields']['ctrl_'.$objWidget->id] = $objWidget->helpmessage;
+			}
+			
+			if ($arrForm['helplabels'] > 0)
 			{
 				$GLOBALS['HELPMESSAGE']['labels']['ctrl_'.$objWidget->id] = $objWidget->helpmessage;
+				$GLOBALS['HELPMESSAGE']['icon'] = $arrForm['helpicon'];
 			}
 		}
 		
@@ -57,7 +62,8 @@ class HelpMessage extends Frontend
 		{
 			foreach( $GLOBALS['HELPMESSAGE']['labels'] as $strId => $strMessage )
 			{
-				$strBuffer = preg_replace('@(]*for="'.$strId.'"[^>]*>.*?)(</label>)@', '$1 <img src="system/themes/default/images/show.gif" alt="Hilfstext" class="helpicon" /><em class="helpmessage">' . $strMessage . '</em>$2', $strBuffer);
+				$icon = is_file(TL_ROOT . '/' . $GLOBALS['HELPMESSAGE']['icon']) ? $GLOBALS['HELPMESSAGE']['icon'] : 'system/themes/default/images/show.gif';
+				$strBuffer = preg_replace('@(]*for="'.$strId.'"[^>]*>.*?)(</label>)@', '$1 <img src="'.$icon.'" alt="" class="helpicon" /><em class="helpmessage">' . $strMessage . '</em>$2', $strBuffer);
 			}
 		}
 			
@@ -79,9 +85,12 @@ window.addEvent('domready', function()
 	});
 	";
 	
-		foreach( $GLOBALS['HELPMESSAGE']['fields'] as $strId => $strMessage )
+		if (is_array($GLOBALS['HELPMESSAGE']['fields']) && count($GLOBALS['HELPMESSAGE']['fields']))
 		{
-			$strJS .= "\n	$('" . $strId . "').addEvent('focus', function(event) { HelpMessage.show(event.target, '" . $strMessage . "'); }).addEvent('blur', function(event) { HelpMessage.hide(event.target); });";
+			foreach( $GLOBALS['HELPMESSAGE']['fields'] as $strId => $strMessage )
+			{
+				$strJS .= "\n	$('" . $strId . "').addEvent('focus', function(event) { HelpMessage.show(event.target, '" . $strMessage . "'); }).addEvent('blur', function(event) { HelpMessage.hide(event.target); });";
+			}
 		}
 	
 	$strJS .= "

@@ -48,6 +48,7 @@ var HelpMessage =
 			obj.element.addClass('messagebox');
 			obj.element.empty();
 			new Element('p').set('html', message).injectInside(obj.element);
+			new Element('span').injectInside(obj.element);
 
 			obj.element.setStyle('top', obj.getCoordinates().top - obj.element.getCoordinates().height - 5);
 			
@@ -71,7 +72,10 @@ var HelpMessage =
 	
 	hide: function(el)
 	{
-		el.element.empty();
-		el.element.removeClass('messagebox');
+		if ($(el.element))
+		{
+			el.element.empty();
+			el.element.removeClass('messagebox');
+		}
 	}
 };

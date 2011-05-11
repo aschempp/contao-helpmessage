@@ -24,3 +24,4 @@ img.helpicon { cursor: pointer }
 	-webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#BB000000,endColorstr=#BB000000);
 }
+.messagebox span { display:none }
